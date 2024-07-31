@@ -12,19 +12,38 @@
 
 # include "Fixed.hpp"
 
-Number::Number()
+Number::Number(int data)
 {
-};
+    _num = data;
+}
 
-std::string print_msg(std::string msg)
+Number::Number(const Number &cpy)
 {
-    msg = "\nmensaje\n";
+    this->_num = cpy._num;
+}
 
-    std::cout << msg << "\n\033[96mPrueba funciona!!!\033[0m" << std::endl;
-    return (msg);
+Number &Number::operator=(const Number &rhs)
+{
+    if (this != &rhs)
+    {
+        this->_num = rhs._num;
+    }
+    return (*this);
 }
 
 Number::~Number()
 {
-    std::cout << "Destructor called" << std::endl;
-};
+}
+
+int getRawBits(void) const
+{
+    return _num;
+}
+
+void    setRawBits(int const raw)
+{
+    _num = raw;
+}
+
+//Number::Number(const Number &cpy) constructor de copia
+//rhs = right hands(pasar de la derecha a la izquierda)

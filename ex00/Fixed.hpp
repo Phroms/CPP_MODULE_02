@@ -6,7 +6,7 @@
 /*   By: agrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:07:20 by agrimald          #+#    #+#             */
-/*   Updated: 2024/07/25 19:07:21 by agrimald         ###   ########.fr       */
+/*   Updated: 2024/07/31 17:20:57 by agrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,17 @@
 class Number
 {
     private:
-    
+        int _num;
+        static int _alm;
     public:
-        Number();
+        Number(int data);
+        Number(const Number &);
+        Number &operator=(const Number &);
         ~Number();
-}
+};
 
-std::string print_msg(std::string msg);
-int main();
+int     getRawBits(void)const;
+void    setRawBits(int const raw);
+int     main();
 
 #endif
