@@ -16,20 +16,21 @@
 # include <iostream>
 # include <string>
 
-class Number
+class Fixed
 {
     private:
         int _num;
         static int _alm;
     public:
-        Number(int data);
-        Number(const Number &);
-        Number &operator=(const Number &);
-        ~Number();
+        Fixed();
+        Fixed(int data);
+        Fixed(const Fixed &);
+        Fixed &operator=(const Fixed &);
+        ~Fixed();
+        int     getRawBits(void) const;
+        void    setRawBits(int const raw);
 };
 
-int     getRawBits(void)const;
-void    setRawBits(int const raw);
 int     main();
 
 #endif
