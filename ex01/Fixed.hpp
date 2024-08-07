@@ -22,9 +22,17 @@ class Fixed
         int _num;
     public:
         Fixed();
+        Fixed(int data);
+        Fixed(const Fixed &);
+        Fixed &operator=(const Fixed &);
+        Fixed(float data);
+        float tofloat()const;
+        int   toInt()const;
         ~Fixed();
-}
+};
 
-std::string prueba(std::string msg);
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
+int main();
+//std::string prueba(std::string msg);
 
 # endif
