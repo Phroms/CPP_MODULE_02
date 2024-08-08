@@ -16,7 +16,33 @@
 # include <iostream>
 # include <string>
 
-std::string mensajito(std::string msg);
+class Fixed
+{
+    private:
+        int _num;
+    public:
+        Fixed();
+        Fixed(int data);
+        Fixed(const Fixed &);
+        Fixed &min(Fixed &a, Fixed &b);
+        const Fixed &min(const Fixed &a, Fixed &b);
+        Fixed &max(Fixed &a, Fixed &b);
+        const Fixed &max(const Fixed &a, Fixed &b);
+        Fixed &operator=(const Fixed &rhs);
+        bool operator<(const Fixed &other);
+        bool operator>(const Fixed &other);
+        bool operator>=(const Fixed &other);
+        bool operator<=(const Fixed &other);
+        bool operator==(const Fixed &other);
+        bool operator!=(const Fixed &other);
+        Fixed operator++();
+        Fixed operator++(int);
+        Fixed operator--();
+        Fixed operator--(int);
+        ~Fixed();
+};
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 int main();
 
 # endif
