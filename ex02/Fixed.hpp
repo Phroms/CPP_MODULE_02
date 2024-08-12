@@ -24,10 +24,10 @@ class Fixed
         Fixed();
         Fixed(int data);
         Fixed(const Fixed &);
-        Fixed &min(Fixed &a, Fixed &b);
-        const Fixed &min(const Fixed &a, Fixed &b);
-        Fixed &max(Fixed &a, Fixed &b);
-        const Fixed &max(const Fixed &a, Fixed &b);
+        static Fixed &min(Fixed &a, Fixed &b);
+        static const Fixed &min(const Fixed &a, Fixed &b);
+        static Fixed &max(Fixed &a, Fixed &b);
+        static const Fixed &max(const Fixed &a, const Fixed &b);
         Fixed &operator=(const Fixed &rhs);
         bool operator<(const Fixed &other);
         bool operator>(const Fixed &other);
@@ -39,6 +39,7 @@ class Fixed
         Fixed operator++(int);
         Fixed operator--();
         Fixed operator--(int);
+        Fixed operator*(const Fixed &other);
         ~Fixed();
 };
 

@@ -86,30 +86,35 @@ bool Fixed::operator!=(const Fixed &other) const
     return _num != other._num;
 }
 
-Fixed::Fixed::operator++()
+Fixed Fixed::operator++()
 {
     ++_num;
     return (*this);
 }
 
-Fixed::Fixed::operator++(int)
+Fixed Fixed::operator++(int)
 {
     Fixed temp = *this; //1. Guarda una copia del objeto actual (valor antes del incremento)
     ++_num; // 2. Incrementa el valor del objeto actual
     return (temp); // 3. Devuelve la copia guardada que contiene el valor original
 }
 
-Fixed::Fixed::operator--()
+Fixed Fixed::operator--()
 {
     --_num;
     return (*this);
 }
 
-Fixed::Fixed::operator--(int)
+Fixed Fixed::operator--(int)
 {
     Fixed temp = *this; // 1. Guarda una copia del objeto actual (valor antes del decremento)
     --_num; // 2. Decrementa el valor del objeto actual
     return (temp); // 3. Devuelve la copia guardada que contiene el valor original
+}
+
+Fixed Fixed::operator*(const Fixed &other)
+{
+    return Fixed(this->_num * other._num);
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
