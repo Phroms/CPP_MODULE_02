@@ -19,12 +19,38 @@ Fixed::Fixed()
 
 Fixed::Fixed(int data)
 {
-    this->_num = data;
+    this->_num = data << _fractionalBits;
 }
 
 Fixed::Fixed(const Fixed &cpy)
 {
     this->_num = cpy._num;
+}
+
+Fixed::Fixed(float data)
+{
+    this->_num = static_cast<int>(roundf(data * (1 << _fractionalBits)));
+}
+
+int Fixed::getRawBits() const
+{
+    //std::cout << _num << "\033[96m\nValor: \033[0m" << std::endl;
+    return this->_num;
+}
+
+void    Fixed::setRawBits(int const raw)
+{
+    this->_num = raw;
+}
+
+float Fixed::toFloat() const
+{
+    return static_cast<float>(_num) / (1 << _fractionalBits);
+}
+
+int Fixed::toInt() const
+{
+    return this->_num >> _fractionalBits;
 }
 
 Fixed &Fixed::min(Fixed &a, Fixed &b)
@@ -58,12 +84,12 @@ Fixed &Fixed::operator=(const Fixed &rhs)
 
 bool Fixed::operator<(const Fixed &other) const
 {
-    return _num < other._num
+    return _num < other._num;
 }
 
 bool Fixed::operator>(const Fixed &other) const
 {
-    return _num > other._num
+    return _num > other._num;
 }
 
 bool Fixed::operator>=(const Fixed &other) const
@@ -76,7 +102,7 @@ bool Fixed::operator<=(const Fixed &other) const
     return _num <= other._num;
 }
 
-bool Fixed::opertator==(const Fixed &other) const
+bool Fixed::operator==(const Fixed &other) const
 {
     return _num == other._num;
 }
@@ -114,12 +140,12 @@ Fixed Fixed::operator--(int)
 
 Fixed Fixed::operator*(const Fixed &other)
 {
-    return Fixed(this->_num * other._num);
+    return Fixed(this->toFloat() * other.toFloat());
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
 {
-    out << fixed._num;
+    out << fixed.toFloat();
     return (out);
 }
 
